@@ -1,88 +1,51 @@
+# Anto426 GTK theme
 
-<p align="center">
-  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=24&duration=3000&pause=1000&color=8cb8e4&center=true&vCenter=true&width=500&height=80&lines=Anto426+Theme;Stable+GTK+Fallback;Tuned+Orchis+Fork" alt="Typing SVG" /></a>
-</p>
+A maintained Orchis fork with one wallpaper-driven theme and compatibility paths
+for GTK3, GTK4 before 4.16, modern GTK4 and libadwaita. Palette and material are
+shared with the Anto426 shell, Qt, VS Code and Obsidian.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Anto426/Anto426/main/asset/divider.gif" width="440" height="40" />
-</p>
-
-# <img src="https://raw.githubusercontent.com/Anto426/Anto426/main/asset/icon.gif" width="60px" /> About;
+## Runtime renderer
 
 ```sh
-root@anto426: ~/anto426-theme (main⚡)$ cat details.txt
-
-A maintained, specialized fork of vinceliuice/Orchis-theme.
-This theme is stripped down to the single 'Anto426-Dark' variant and customized around the stable
-Riva dynamic palette engine rules. This acts as the baseline fallback theme when no dynamic wallpaper-driven
-color scheme has been compiled yet.
+python3 palette/render.py --palette palette/default.json \
+  --material palette/material.json --output build/theme
 ```
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Anto426/Anto426/main/asset/divider.gif" width="440" height="40" />
-</p>
+The desktop downloads checksum-pinned runtime resources from this repository.
+`palette/render.py` owns color mapping, SVG recoloring, current libadwaita roles
+and background transparency. Text remains opaque. Current libadwaita controls
+retain native geometry; the user stylesheet supplies semantic roles.
+Older GTK4 runtimes automatically receive named-color CSS; `--gtk4-legacy`
+forces this path for artifact checks. GTK3 retains the compiled widget fallback.
+The same `anto426` theme name applies to every path.
 
-# <img src="https://raw.githubusercontent.com/Anto426/Anto426/main/asset/icon2.gif" width="70px" /> Install;
+`palette/base.tar.gz` is a deterministic archive of the compiled GTK3/GTK4 base.
+To rebuild it after changing SCSS or assets:
 
 ```sh
-root@anto426: ~/anto426-theme (main⚡)$ ./install-anto426.sh
-
-To build and register the GTK theme on your system:
+python3 scripts/build-palette.py
+python3 scripts/verify-palette.py
 ```
 
-```bash
+Build dependency: `sassc`. Runtime renderer: Python 3.10+.
+Reference revision, coverage and execution limits: [UPSTREAM.md](UPSTREAM.md).
+
+## Static fallback installation
+
+```sh
 git clone https://github.com/Arch-repo/gtk-theme.git
-cd Anto426-theme
-bash ./install-anto426.sh
+cd gtk-theme
+bash install-anto426.sh
 ```
 
-### ⚙️ Compilation Tweak Preset
+The wrapper builds the existing `Anto426-Dark` baseline for initial installation.
+The dotfiles installer subsequently renders and selects `anto426` from the live
+palette. No Git checkout or Sass compilation is needed during wallpaper changes.
 
-The wrapper script automatically locks compilation parameters for the customized Orchis target:
+GTK CSS overrides cannot style content drawn by an application outside GTK or
+accessible only inside a sandbox. Flatpak applications require access to the
+user theme/CSS directory. Background blur/refraction comes from the Hyprland
+material rules; CSS itself does not implement compositor refraction.
 
-```bash
-./install.sh -n Anto426 -c dark -s standard -t default --tweaks compact solid primary --round 8
-```
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Anto426/Anto426/main/asset/divider.gif" width="440" height="40" />
-</p>
-
-# <img src="https://raw.githubusercontent.com/Anto426/Anto426/main/asset/icon3.gif" width="70px" /> Requirements;
-
-```sh
-root@anto426: ~/anto426-theme (main⚡)$ pacman -Q --needed
-
-- GTK >= 3.20
-- gnome-themes-extra
-- Murrine GTK2 engine
-- sassc compiler
-```
-
-On Arch Linux, satisfy compile tools via:
-
-```bash
-sudo pacman -S --needed sassc gnome-themes-extra gtk-engine-murrine
-```
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Anto426/Anto426/main/asset/divider.gif" width="440" height="40" />
-</p>
-
-# <img src="https://raw.githubusercontent.com/Anto426/Anto426/main/asset/icon4.gif" width="70px" /> Attribution;
-
-```sh
-root@anto426: ~/anto426-theme (main⚡)$ cat LICENSE
-
-Derived from Orchis by vinceliuice and the Materia design system.
-Licensing inherits all upstream GPL specifications; details are found in COPYING.
-```
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Anto426/Anto426/main/asset/divider.gif" width="440" height="40" />
-</p>
-
-<div align="center">
-  <i>Configured by anto426</i>
-</div>
-
+Based on [vinceliuice/Orchis-theme](https://github.com/vinceliuice/Orchis-theme),
+with original GPL-3.0 attribution retained in [COPYING](COPYING).

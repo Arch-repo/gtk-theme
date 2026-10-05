@@ -1,0 +1,140 @@
+/* Current GTK4/libadwaita roles; fonts and accessibility helper variables remain native. */
+@define-color accent_bg_color {{accent}};
+@define-color accent_fg_color {{selected_fg}};
+@define-color accent_color {{accent}};
+@define-color window_bg_color {{rgba_background_window}};
+@define-color window_fg_color {{foreground}};
+@define-color view_bg_color {{rgba_base_view}};
+@define-color view_fg_color {{foreground}};
+@define-color theme_bg_color {{rgba_background_window}};
+@define-color theme_fg_color {{foreground}};
+@define-color theme_base_color {{rgba_base_view}};
+@define-color theme_text_color {{foreground}};
+@define-color theme_selected_bg_color {{accent}};
+@define-color theme_selected_fg_color {{selected_fg}};
+@define-color borders {{rgba_border_0p35}};
+@define-color headerbar_bg_color {{rgba_titlebar_header}};
+@define-color headerbar_backdrop_color {{rgba_titlebar_backdrop_header}};
+@define-color headerbar_fg_color {{foreground}};
+@define-color headerbar_border_color {{rgba_border_0p35}};
+@define-color headerbar_shade_color rgba(0, 0, 0, 0.18);
+@define-color card_bg_color {{rgba_surface_0p18}};
+@define-color card_fg_color {{foreground}};
+@define-color card_shade_color rgba(0, 0, 0, 0.18);
+@define-color dialog_bg_color {{base_alt}};
+@define-color dialog_fg_color {{foreground}};
+@define-color popover_bg_color {{popover}};
+@define-color popover_fg_color {{foreground}};
+@define-color shade_color rgba(0, 0, 0, 0.18);
+@define-color scrollbar_outline_color {{rgba_foreground_0p18}};
+@define-color destructive_bg_color {{red}};
+@define-color destructive_fg_color {{selected_fg}};
+@define-color destructive_color {{red}};
+@define-color success_bg_color {{green}};
+@define-color success_fg_color {{selected_fg}};
+@define-color success_color {{green}};
+@define-color warning_bg_color {{yellow}};
+@define-color warning_fg_color {{selected_fg}};
+@define-color warning_color {{yellow}};
+@define-color error_bg_color {{red}};
+@define-color error_fg_color {{selected_fg}};
+@define-color error_color {{red}};
+:root {
+  --accent-bg-color: {{accent}};
+  --accent-fg-color: {{selected_fg}};
+  --accent-color: {{accent}};
+  --destructive-bg-color: {{red}};
+  --destructive-fg-color: {{selected_fg}};
+  --destructive-color: {{red}};
+  --success-bg-color: {{green}};
+  --success-fg-color: {{selected_fg}};
+  --success-color: {{green}};
+  --warning-bg-color: {{yellow}};
+  --warning-fg-color: {{selected_fg}};
+  --warning-color: {{yellow}};
+  --error-bg-color: {{red}};
+  --error-fg-color: {{selected_fg}};
+  --error-color: {{red}};
+  --window-bg-color: {{rgba_background_window}};
+  --window-fg-color: {{foreground}};
+  --view-bg-color: {{rgba_base_view}};
+  --view-fg-color: {{foreground}};
+  --headerbar-bg-color: {{rgba_titlebar_header}};
+  --headerbar-backdrop-color: {{rgba_titlebar_backdrop_header}};
+  --headerbar-fg-color: {{foreground}};
+  --headerbar-border-color: {{rgba_border_0p35}};
+  --headerbar-shade-color: rgba(0, 0, 0, 0.18);
+  --headerbar-darker-shade-color: rgba(0, 0, 0, 0.35);
+  --sidebar-bg-color: {{rgba_base_alt_sidebar}};
+  --sidebar-fg-color: {{foreground}};
+  --sidebar-backdrop-color: {{rgba_base_alt_sidebar}};
+  --sidebar-border-color: {{rgba_border_0p35}};
+  --sidebar-shade-color: rgba(0, 0, 0, 0.18);
+  --secondary-sidebar-bg-color: {{rgba_base_sidebar}};
+  --secondary-sidebar-fg-color: {{foreground}};
+  --secondary-sidebar-backdrop-color: {{rgba_base_sidebar}};
+  --secondary-sidebar-border-color: {{rgba_border_0p35}};
+  --secondary-sidebar-shade-color: rgba(0, 0, 0, 0.18);
+  --card-bg-color: {{rgba_surface_0p18}};
+  --card-fg-color: {{foreground}};
+  --card-shade-color: rgba(0, 0, 0, 0.18);
+  --overview-bg-color: {{rgba_base_view}};
+  --overview-fg-color: {{foreground}};
+  --thumbnail-bg-color: {{base}};
+  --thumbnail-fg-color: {{foreground}};
+  --active-toggle-bg-color: {{rgba_accent_0p22}};
+  --active-toggle-fg-color: {{foreground}};
+  --dialog-bg-color: {{base_alt}};
+  --dialog-fg-color: {{foreground}};
+  --popover-bg-color: {{popover}};
+  --popover-fg-color: {{foreground}};
+  --popover-shade-color: rgba(0, 0, 0, 0.18);
+  --shade-color: rgba(0, 0, 0, 0.18);
+  --scrollbar-outline-color: {{rgba_foreground_0p18}};
+}
+
+/* The compiled GTK fallback contains literal colors. Keep its geometry while
+ * applying the same material roles as native libadwaita widgets. */
+window.background,
+.background {
+  background-image: none;
+  background-color: var(--window-bg-color);
+  color: var(--window-fg-color);
+}
+.view,
+textview text,
+iconview,
+gridview,
+.content-view {
+  background-image: none;
+  background-color: var(--view-bg-color);
+  color: var(--view-fg-color);
+}
+.sidebar,
+placessidebar,
+stacksidebar list,
+.navigation-sidebar {
+  background-color: var(--sidebar-bg-color);
+  color: var(--sidebar-fg-color);
+}
+headerbar {
+  background-image: none;
+  background-color: var(--headerbar-bg-color);
+  color: var(--headerbar-fg-color);
+}
+headerbar:backdrop {
+  background-color: var(--headerbar-backdrop-color);
+  color: var(--headerbar-fg-color);
+}
+popover > contents,
+popover > arrow {
+  background-image: none;
+  background-color: var(--popover-bg-color);
+  color: var(--popover-fg-color);
+}
+window.dialog,
+dialog.background,
+messagedialog.background {
+  background-color: var(--dialog-bg-color);
+  color: var(--dialog-fg-color);
+}

@@ -9,5 +9,5 @@ exec "$script_dir/install.sh" \
     -s standard \
     -t default \
     --tweaks compact solid primary \
-    --round 8 \
+    --round 12px \
     "$@"

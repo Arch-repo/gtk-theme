@@ -5,3 +5,5 @@
 src/cinnamon/*.css
 src/gnome-shell/*/*.css
 src/gtk/*/*.css
+__pycache__/
+build/

@@ -162,7 +162,8 @@
       }
     }
 
-    #NautilusProgressIndicator {
+    #NautilusProgressIndicator,
+    .nautilus-progress-indicator {
       > menubutton > button {
         listview.view {
           color: $titlebar-text-secondary;
@@ -226,7 +227,7 @@
       }
 
       > viewport {
-        > list.navigation-sidebar {
+        list.navigation-sidebar {
           padding: 16px 0 16px 0;
           background: none;
           border-radius: $window-radius - $space-size;
@@ -257,15 +258,15 @@
               animation: none;
             }
 
-            &, image.sidebar-icon, label.sidebar-label {
+            &, image, label {
               color: $titlebar-text-secondary;
             }
 
-            image.sidebar-icon {
+            image {
               padding-right: $space-size;
             }
 
-            label.sidebar-label {
+            label {
               color: inherit;
               min-height: 54px;
               padding-left: $space-size;
@@ -284,7 +285,7 @@
 
               background-color: rgba($drop_target_color, 0.1);
 
-              &, image.sidebar-icon, label.sidebar-label {
+              &, image, label {
                 color: $drop_target_color;
               }
             }
@@ -296,7 +297,7 @@
             }
 
             &:hover {
-              image.sidebar-icon, label.sidebar-label {
+              image, label {
                 color: $primary;
               }
             }
@@ -306,11 +307,11 @@
               font-weight: 700;
               // font-size: larger;
 
-              image.sidebar-icon {
+              image {
                 color: $primary;
               }
 
-              image.sidebar-icon, label.sidebar-label {
+              image, label {
                 color: $primary;
               }
 
@@ -331,7 +332,7 @@
                   url("assets/row-selected#{$blackness-asset-suffix}#{$theme-asset-suffix}@2.png"));
               }
 
-              label.sidebar-label {
+              label {
                 margin-left: $space-size + 4px;
               }
 
@@ -343,7 +344,7 @@
             }
 
             &:disabled {
-              &, image.sidebar-icon, label.sidebar-label {
+              &, image, label {
                 color: $titlebar-text-secondary-disabled;
               }
             }
@@ -479,7 +480,9 @@
   }
 
   .nautilus-list-view {
-    #NautilusViewCell {
+
+    #NautilusViewCell,
+    .nautilus-view-cell {
       padding: 0;
     }
   }
@@ -497,13 +500,15 @@
     border-radius: $space-size;
   }
 
-  #NautilusPathBar {
+  #NautilusPathBar,
+  .nautilus-pathbar {
     background-color: $titlebar-fill;
+  }
 
-    #NautilusPathButton {
-      &.current-dir {
-        color: $titlebar-text;
-      }
+  #NautilusPathButton,
+  .nautilus-path-button {
+    &.current-dir {
+      color: $titlebar-text;
     }
   }
 }
@@ -529,7 +534,8 @@
   child.activatable {
     padding: 0;
 
-    #NautilusViewCell {
+    #NautilusViewCell,
+    .nautilus-view-cell {
       padding: $space-size;
 
       clamp box {
@@ -549,7 +555,8 @@
   }
 }
 
-#NautilusQueryEditor {
+#NautilusQueryEditor,
+.nautilus-query-editor {
   // search entry
   border-radius: $circular-radius;
   padding: 0 ($medium-size - $menuitem-size) / 2 0 ($space-size + 2px);
@@ -566,11 +573,13 @@
   }
 }
 
-#NautilusPathBar {
+#NautilusPathBar,
+.nautilus-pathbar {
   background-color: $fill;
   border-radius: $circular-radius;
 
-  #NautilusPathButton {
+  #NautilusPathButton,
+  .nautilus-path-button {
     margin: 0 $space-size / 2;
     border-radius: $circular-radius;
 
@@ -588,12 +597,13 @@
     }
   }
 
-  > menubutton > button {
+  &.linked > menubutton > button.toggle {
     border-radius: $circular-radius;
   }
 }
 
-#NautilusQueryEditorTag {
+#NautilusQueryEditorTag,
+.nautilus-query-editor-tag {
   border-radius: $circular-radius;
 
   > button {
@@ -604,9 +614,21 @@
   }
 }
 
-#NautilusFileChooser {
+#NautilusFileChooser,
+.nautilus-file-chooser {
   .content-pane {
     background-color: $base;
+  }
+}
+
+.mc-toggle-group {
+  padding: 0;
+  border-radius: $circular-radius;
+  background-color: $fill;
+
+  > button {
+    border-radius: $circular-radius;
+    padding: 0 2px;
   }
 }
 

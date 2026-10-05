@@ -1,0 +1,11 @@
+name: GTK palette
+on: [push, pull_request]
+jobs:
+  palette:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - run: sudo apt-get update && sudo apt-get install -y sassc
+      - run: python3 scripts/verify-palette.py
+      - run: python3 scripts/build-palette.py
+      - run: git diff --exit-code -- palette/base.tar.gz

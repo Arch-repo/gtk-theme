@@ -1,0 +1,19 @@
+{
+  "background": "#24212d",
+  "surface": "#3b3546",
+  "base": "#302a39",
+  "base_alt": "#453c4e",
+  "select": "#70516b",
+  "accent": "#ed94b8",
+  "foreground": "#f5f2f8",
+  "muted": "#b7acbe",
+  "border": "#6c5b73",
+  "selected_fg": "#231e29",
+  "red": "#ed8796",
+  "orange": "#f5a97f",
+  "yellow": "#eed49f",
+  "green": "#a6da95",
+  "pink": "#f5bde6",
+  "purple": "#c6a0f6",
+  "gray": "#8b8196"
+}

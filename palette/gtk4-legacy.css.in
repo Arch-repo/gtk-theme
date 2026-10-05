@@ -1,0 +1,50 @@
+/* Current GTK4/libadwaita roles; fonts and accessibility helper variables remain native. */
+@define-color accent_bg_color {{accent}};
+@define-color accent_fg_color {{selected_fg}};
+@define-color accent_color {{accent}};
+@define-color window_bg_color {{rgba_background_window}};
+@define-color window_fg_color {{foreground}};
+@define-color view_bg_color {{rgba_base_view}};
+@define-color view_fg_color {{foreground}};
+@define-color theme_bg_color {{rgba_background_window}};
+@define-color theme_fg_color {{foreground}};
+@define-color theme_base_color {{rgba_base_view}};
+@define-color theme_text_color {{foreground}};
+@define-color theme_selected_bg_color {{accent}};
+@define-color theme_selected_fg_color {{selected_fg}};
+@define-color borders {{rgba_border_0p35}};
+@define-color headerbar_bg_color {{rgba_titlebar_header}};
+@define-color headerbar_backdrop_color {{rgba_titlebar_backdrop_header}};
+@define-color headerbar_fg_color {{foreground}};
+@define-color headerbar_border_color {{rgba_border_0p35}};
+@define-color headerbar_shade_color rgba(0, 0, 0, 0.18);
+@define-color card_bg_color {{rgba_surface_0p18}};
+@define-color card_fg_color {{foreground}};
+@define-color card_shade_color rgba(0, 0, 0, 0.18);
+@define-color dialog_bg_color {{base_alt}};
+@define-color dialog_fg_color {{foreground}};
+@define-color popover_bg_color {{popover}};
+@define-color popover_fg_color {{foreground}};
+@define-color shade_color rgba(0, 0, 0, 0.18);
+@define-color scrollbar_outline_color {{rgba_foreground_0p18}};
+@define-color destructive_bg_color {{red}};
+@define-color destructive_fg_color {{selected_fg}};
+@define-color destructive_color {{red}};
+@define-color success_bg_color {{green}};
+@define-color success_fg_color {{selected_fg}};
+@define-color success_color {{green}};
+@define-color warning_bg_color {{yellow}};
+@define-color warning_fg_color {{selected_fg}};
+@define-color warning_color {{yellow}};
+@define-color error_bg_color {{red}};
+@define-color error_fg_color {{selected_fg}};
+@define-color error_color {{red}};
+
+/* GTK4 before 4.16 and older libadwaita use named colors. */
+window.background, .background { background-image: none; background-color: @window_bg_color; color: @window_fg_color; }
+.view, textview text, iconview, gridview, .content-view { background-color: @view_bg_color; color: @view_fg_color; }
+.sidebar, placessidebar, stacksidebar list { background-color: {{rgba_base_alt_sidebar}}; color: @window_fg_color; }
+headerbar { background-image: none; background-color: @headerbar_bg_color; color: @headerbar_fg_color; }
+headerbar:backdrop { background-color: @headerbar_backdrop_color; }
+popover > contents, popover > arrow { background-image: none; background-color: @popover_bg_color; color: @popover_fg_color; }
+window.dialog, dialog.background, messagedialog.background { background-color: @dialog_bg_color; color: @dialog_fg_color; }
