@@ -21,3 +21,12 @@ artifact checks, not a claim of execution on an old installation.
 - https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/css-variables.html
 
 Original GPL-3.0 licensing and attribution are retained in `COPYING`.
+
+LibreOffice 26.8.0.3's `sfx2/source/control/recentdocsview.cxx` uses
+`StartCenterThumbnailsBackgroundColor`/`StartCenterThumbnailsTextColor` instead
+of GTK style colors. `thumbnailview.cxx` paints its background as an opaque RGB
+primitive. `palette/libreoffice.json` covers these native preferences and the
+application background; it intentionally does not override document colors.
+
+- https://github.com/LibreOffice/core/blob/libreoffice-26.8.0.3/sfx2/source/control/recentdocsview.cxx
+- https://github.com/LibreOffice/core/blob/libreoffice-26.8.0.3/sfx2/source/control/thumbnailview.cxx

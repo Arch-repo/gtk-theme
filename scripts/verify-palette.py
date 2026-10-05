@@ -76,6 +76,15 @@ class Palette(unittest.TestCase):
                     renderer.render(palette, material, output)
                 self.assertFalse(output.exists())
 
+    def test_libreoffice_native_canvas_uses_the_same_roles_without_document_overrides(self):
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder)
+            renderer.render(PALETTE, MATERIAL, output)
+            office = json.loads((output / 'libreoffice.json').read_text())
+            self.assertEqual(office['startCenter']['StartCenterThumbnailsBackgroundColor'], int(PALETTE['background'][1:], 16))
+            self.assertEqual(office['startCenter']['StartCenterThumbnailsTextColor'], int(PALETTE['foreground'][1:], 16))
+            self.assertEqual(office['appearance'], {'AppBackground': int(PALETTE['background'][1:], 16)})
+
 
 if __name__ == '__main__':
     unittest.main()

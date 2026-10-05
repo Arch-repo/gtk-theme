@@ -93,6 +93,12 @@ def render(palette, material, output, gtk4_modern=True):
         for filename, base in (("gtk.css", "base.css"), ("gtk-dark.css", "base-dark.css")):
             (directory / filename).write_text(f'@import url("{base}");\n@import url("palette.css");\n')
     (output / "index.theme").write_text("[X-GNOME-Metatheme]\nName=anto426\nGtkTheme=anto426\nComment=Anto426 dynamic GTK palette\n")
+    # LibreOffice's VCL recent-document canvas bypasses GtkStyleContext and
+    # hardcodes #666666. Its native configuration uses opaque 24-bit RGB.
+    office_roles = json.loads((ROOT / 'libreoffice.json').read_text())
+    office = {group: {key: int(roles[role][1:], 16) for key, role in entries.items()}
+              for group, entries in office_roles.items()}
+    (output / 'libreoffice.json').write_text(json.dumps(office, indent=2) + '\n')
     license_path = ROOT / 'COPYING'
     if not license_path.is_file():
         license_path = ROOT.parent / 'COPYING'

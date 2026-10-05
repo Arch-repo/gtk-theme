@@ -19,6 +19,13 @@ Older GTK4 runtimes automatically receive named-color CSS; `--gtk4-legacy`
 forces this path for artifact checks. GTK3 retains the compiled widget fallback.
 The same `anto426` theme name applies to every path.
 
+The renderer also emits `libreoffice.json` for the VCL application canvases
+that bypass GTK CSS. Recent-document background/text and the application
+background use the shared palette. The desktop applies these three properties
+through LibreOffice's configuration API, including while it is open, retaining
+the selected scheme and document-specific colors. No document canvas alpha is
+claimed: LibreOffice paints its recent-document primitive as opaque RGB.
+
 The complete GTK3 and plain GTK4 widget styles remain in the compiled base.
 Shared compatibility rules cover readable action/selection text, placeholders,
 semantic states and dynamically colored sliders. Error, warning and success

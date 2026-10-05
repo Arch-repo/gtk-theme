@@ -1,0 +1,9 @@
+{
+  "startCenter": {
+    "StartCenterThumbnailsBackgroundColor": "background",
+    "StartCenterThumbnailsTextColor": "foreground"
+  },
+  "appearance": {
+    "AppBackground": "background"
+  }
+}
