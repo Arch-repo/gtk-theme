@@ -27,5 +27,20 @@
   "a58dc1": "accent",
   "c59dc5": "accent",
   "f6f7fb": "foreground",
-  "b9c4d2": "muted"
+  "b9c4d2": "muted",
+  "f38ba8": "red",
+  "d96f89": "red",
+  "f17497": "red",
+  "ed547e": "red",
+  "c6a7aa": "yellow",
+  "a9878b": "yellow",
+  "bc989b": "yellow",
+  "ae8286": "yellow",
+  "969e9f": "green",
+  "737f82": "green",
+  "768081": "green",
+  "98736d": "orange",
+  "b3908b": "orange",
+  "a383c7": "purple",
+  "aa7faa": "pink"
 }

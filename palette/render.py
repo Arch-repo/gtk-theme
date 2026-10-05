@@ -77,7 +77,7 @@ def render(palette, material, output, gtk4_modern=True):
             target.write_bytes(content)
     for version, template in (("3.0", "gtk3.css.in"), ("4.0", "gtk4.css.in" if gtk4_modern else "gtk4-legacy.css.in")):
         directory = output / ("gtk-" + version)
-        overlay = substitute((ROOT / template).read_text())
+        overlay = substitute((ROOT / template).read_text() + '\n' + (ROOT / 'compat.css.in').read_text())
         (directory / "palette.css").write_text(overlay)
         for filename, base in (("gtk.css", "base.css"), ("gtk-dark.css", "base-dark.css")):
             (directory / filename).write_text(f'@import url("{base}");\n@import url("palette.css");\n')

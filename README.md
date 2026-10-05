@@ -19,6 +19,11 @@ Older GTK4 runtimes automatically receive named-color CSS; `--gtk4-legacy`
 forces this path for artifact checks. GTK3 retains the compiled widget fallback.
 The same `anto426` theme name applies to every path.
 
+The complete GTK3 and plain GTK4 widget styles remain in the compiled base.
+Shared compatibility rules cover readable action/selection text, placeholders,
+semantic states and dynamically colored sliders. Error, warning and success
+literals in the historical base are recolored along with the primary palette.
+
 `palette/base.tar.gz` is a deterministic archive of the compiled GTK3/GTK4 base.
 To rebuild it after changing SCSS or assets:
 

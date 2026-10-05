@@ -1,0 +1,58 @@
+/* Shared control colors for the maintained GTK3/GTK4 base and libadwaita.
+ * Preserve each toolkit's geometry; explicit states prevent compiled literals
+ * from overriding palette roles or leaving light text on a light accent. */
+@define-color placeholder_text_color {{muted}};
+@define-color insensitive_fg_color {{muted}};
+@define-color insensitive_bg_color {{background}};
+@define-color insensitive_base_color {{base_alt}};
+@define-color theme_unfocused_fg_color {{foreground}};
+@define-color theme_unfocused_text_color {{foreground}};
+@define-color theme_unfocused_bg_color {{background}};
+@define-color theme_unfocused_base_color {{base}};
+@define-color theme_unfocused_selected_bg_color {{accent}};
+@define-color theme_unfocused_selected_fg_color {{selected_fg}};
+@define-color unfocused_insensitive_color {{muted}};
+@define-color unfocused_borders {{rgba_border_0p35}};
+@define-color content_view_bg {{base}};
+@define-color text_view_bg {{background}};
+@define-color destructive_color {{red}};
+@define-color success_color {{green}};
+@define-color warning_color {{yellow}};
+@define-color error_color {{red}};
+* { caret-color: @accent_color; }
+button.suggested-action,
+button.suggested-action:hover,
+button.suggested-action:active,
+button.suggested-action:checked {
+  background-image: none;
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+button.destructive-action,
+button.destructive-action:hover,
+button.destructive-action:active,
+button.destructive-action:checked {
+  background-image: none;
+  background-color: @destructive_bg_color;
+  color: @destructive_fg_color;
+}
+button.suggested-action:disabled,
+button.destructive-action:disabled { color: @insensitive_fg_color; }
+.view:selected, row:selected, textview text selection,
+label selection, entry selection {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+entry > text > placeholder { color: @placeholder_text_color; }
+.success { color: @success_color; }
+.warning { color: @warning_color; }
+.error { color: @error_color; }
+/* Bitmap sliders from the historical base cannot follow a dynamic palette. */
+scale slider {
+  background-image: none;
+  background-color: @accent_bg_color;
+}
+scale highlight, progressbar progress {
+  background-image: none;
+  background-color: @accent_bg_color;
+}

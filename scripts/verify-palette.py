@@ -48,6 +48,21 @@ class Palette(unittest.TestCase):
                 self.assertTrue((output / 'COPYING').is_file())
                 self.assertIn('@import url("palette.css")', (output / 'gtk-3.0/gtk.css').read_text())
 
+    def test_full_widget_base_keeps_coverage_and_recolors_semantic_states(self):
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder)
+            renderer.render(PALETTE, MATERIAL, output)
+            for version in ('3.0', '4.0'):
+                base = (output / ('gtk-' + version) / 'base.css').read_text()
+                for control in ('entry', 'button', 'notebook', 'popover', 'check', 'switch', 'scale'):
+                    self.assertRegex(base, r'\b' + control + r'\b')
+                for historical in ('#f38ba8', '#c6a7aa', '#969e9f', '#98736d', '#a383c7'):
+                    self.assertNotIn(historical, base.lower())
+                overlay = (output / ('gtk-' + version) / 'palette.css').read_text()
+                self.assertIn('button.suggested-action', overlay)
+                self.assertIn('color: @accent_fg_color', overlay)
+                self.assertIn('@define-color placeholder_text_color ' + PALETTE['muted'], overlay)
+
     def test_bad_palette_and_material_are_rejected_before_output(self):
         with tempfile.TemporaryDirectory() as folder:
             output = Path(folder) / 'theme'
