@@ -31,7 +31,7 @@ To build and register the GTK theme on your system:
 ```
 
 ```bash
-git clone https://github.com/Arch-repo/Anto426-theme.git
+git clone https://github.com/Arch-repo/gtk-theme.git
 cd Anto426-theme
 bash ./install-anto426.sh
 ```
