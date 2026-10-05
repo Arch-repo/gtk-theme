@@ -130,6 +130,17 @@ popover.background,
   box-shadow: none;
 }
 
+/* The full historical theme paints the notebook behind Nemo's icon view.
+ * An alpha view alone cannot reveal the compositor through that opaque parent. */
+.nemo-window notebook,
+.nemo-window notebook > stack,
+.nemo-window .nemo-window-pane {
+  background-image: none;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
 dialog.background,
 messagedialog.background,
 .dialog-content {

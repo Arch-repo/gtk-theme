@@ -45,6 +45,9 @@ class Palette(unittest.TestCase):
                 else:
                     for text in (gtk4, (output / 'gtk-4.0/base.css').read_text()):
                         self.assertNotRegex(text, r'var\(|color-mix\(|--[a-z-]+\s*:')
+                    legacy_base = (output / 'gtk-4.0/base.css').read_text()
+                    self.assertIn('background-color: alpha(@accent_bg_color, 0.5)', legacy_base)
+                    self.assertIn('color: @accent_fg_color;', legacy_base)
                 self.assertTrue((output / 'COPYING').is_file())
                 self.assertIn('@import url("palette.css")', (output / 'gtk-3.0/gtk.css').read_text())
 

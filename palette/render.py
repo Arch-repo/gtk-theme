@@ -68,6 +68,17 @@ def render(palette, material, output, gtk4_modern=True):
                 content = recolor(content.decode()).encode()
             if not gtk4_modern and relative.parts[0] == 'gtk-4.0' and relative.suffix == '.css':
                 text = re.sub(r':root\s*\{[^{}]*\}', '', content.decode())
+                # Preserve the state declarations rather than dropping controls
+                # whose updated upstream CSS uses modern color expressions.
+                text = re.sub(r'color-mix\(in srgb, var\(--([\w-]+)\) (\d+)%?, transparent\)',
+                              lambda m: f'alpha(@{m[1].replace("-", "_")}, {int(m[2])/100:g})', text)
+                text = text.replace('color-mix(in srgb, var(--accent-bg-color) var(--dim-opacity), transparent)',
+                                    'alpha(@accent_bg_color, 0.5)')
+                for index, role in enumerate(('accent', 'purple', 'pink')):
+                    text = text.replace(f'@background_color_{index}', roles[role])
+                    text = text.replace(f'var(--background-color-{index})', roles[role])
+                for role in ('accent-bg-color', 'accent-fg-color', 'window-bg-color'):
+                    text = text.replace(f'var(--{role})', '@' + role.replace('-', '_'))
                 text = re.sub(r'^.*(?:--[a-z-]+\s*:|var\(|color-mix\().*\n', '', text, flags=re.M)
                 content = text.encode()
             if relative.name in ("gtk.css", "gtk-dark.css"):
